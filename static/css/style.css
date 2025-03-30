@@ -1,0 +1,273 @@
+/* static/css/style.css */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #444;
+}
+
+.video-list {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0;
+}
+
+.video-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.video-item h2 {
+    margin-top: 0;
+    color: #0056b3;
+}
+
+.video-player {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin-bottom: 15px;
+}
+
+.video-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.tags {
+    margin-bottom: 15px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #e0e0e0;
+    color: #555;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+/* Specific tag styling (optional) */
+.tag-mostly_content { background-color: #c8e6c9; color: #2e7d32; }
+.tag-mixed_content { background-color: #fff9c4; color: #f57f17; }
+.tag-python { background-color: #bbdefb; color: #0d47a1; }
+.tag-webdev { background-color: #ffcdd2; color: #b71c1c; }
+
+
+/* --- Timeline Styling --- */
+.timeline-container {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.timeline-bar {
+    display: flex; /* Lay out segments horizontally */
+    height: 25px;  /* Height of the timeline */
+    width: 100%;
+    background-color: #eee; /* Background for empty space if segments don't total 100% */
+    border-radius: 4px;
+    overflow: hidden; /* Ensure segments stay within rounded corners */
+    border: 1px solid #ccc;
+}
+
+.timeline-segment {
+    height: 100%;
+    /* Width is set inline via style attribute */
+    text-align: center;
+    color: white;
+    font-size: 0.7em;
+    line-height: 25px; /* Vertically center text (if any) */
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: help; /* Indicate the tooltip */
+    box-shadow: inset 0 0 1px rgba(0,0,0,0.2); /* Subtle inner border */
+}
+
+/* Color Coding - Define colors for your segment types */
+.segment-intro { background-color: #4CAF50; /* Green */ }
+.segment-content { background-color: #2196F3; /* Blue */ }
+.segment-ad { background-color: #f44336; /* Red */ }
+.segment-engagement { background-color: #ff9800; /* Orange */ }
+.segment-outro { background-color: #673AB7; /* Purple */ }
+.segment-other { background-color: #9E9E9E; /* Grey */ }
+/* Add more colors as needed */
+
+.timeline-labels {
+    display: flex;
+    width: 100%;
+    font-size: 0.7em;
+    color: #555;
+    margin-top: 3px;
+}
+.timeline-labels span {
+     overflow: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     display: inline-block;
+     text-align: center; /* Adjust as needed */
+     border-left: 1px solid #eee; /* Subtle separator */
+}
+.timeline-labels span:first-child {
+    border-left: none;
+}
+
+.duration-info {
+    font-size: 0.9em;
+    color: #666;
+    text-align: right;
+}
+
+/* static/css/style.css */
+
+/* --- Styles for Timeline Legend --- */
+.timeline-legend {
+    margin-top: 15px; /* Space above the legend */
+    padding-top: 10px;
+    border-top: 1px solid #eee; /* Separator line */
+    display: flex;       /* Arrange items horizontally */
+    flex-wrap: wrap;     /* Allow items to wrap to the next line */
+    gap: 10px 15px;      /* Spacing between items (row-gap column-gap) */
+    font-size: 0.9em;
+    color: #555;
+}
+
+.legend-title {
+    font-weight: bold;
+    margin-right: 5px;
+    flex-basis: 100%; /* Make title take full width initially if needed */
+    margin-bottom: 5px; /* Space below title if items wrap */
+}
+
+.legend-item {
+    display: flex;          /* Align swatch and text */
+    align-items: center;    /* Vertically center swatch and text */
+}
+
+.legend-color-swatch {
+    display: inline-block;  /* Make it behave like a block but stay inline */
+    width: 16px;            /* Size of the color square */
+    height: 16px;           /* Size of the color square */
+    margin-right: 6px;      /* Space between swatch and text */
+    border: 1px solid rgba(0,0,0,0.2); /* Subtle border */
+    vertical-align: middle; /* Align with text */
+    flex-shrink: 0; /* Prevent swatch from shrinking if text is long */
+}
+
+/* Ensure swatch colors are applied (already defined above) */
+/* .segment-intro { background-color: #4CAF50; } */
+/* .segment-content { background-color: #2196F3; } */
+/* etc... */
+
+.legend-text {
+    /* Optional: Add specific styling for text if needed */
+}
+
+/* --- Recommendation Styles --- */
+.recommendation {
+    border: 1px solid #e0e0e0;
+    padding: 8px 12px;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Added margin below */
+    border-radius: 4px;
+    font-size: 0.9em;
+    background-color: #f9f9f9;
+    line-height: 1.4;
+}
+
+.recommendation strong {
+    margin-right: 5px;
+    font-weight: 600; /* Slightly bolder */
+}
+
+/* Specific style for user notes */
+.user-rec {
+    border-left: 4px solid #6c757d; /* Neutral grey bar */
+    background-color: #f8f9fa;
+    color: #495057;
+}
+.user-rec strong {
+    color: #495057;
+}
+
+
+/* Styling based on logic analysis result */
+.logic-rec.rec-good {
+    border-left: 4px solid #28a745; /* Green */
+    background-color: #e9f5ec; /* Light green background */
+    color: #155724; /* Darker green text */
+}
+.logic-rec.rec-good strong {
+    color: #155724;
+}
+
+
+.logic-rec.rec-caution {
+    border-left: 4px solid #ffc107; /* Yellow/Amber */
+    background-color: #fff8e1; /* Light yellow background */
+    color: #856404; /* Darker yellow text */
+}
+.logic-rec.rec-caution strong {
+    color: #856404;
+}
+
+.logic-rec.rec-unknown {
+    border-left: 4px solid #adb5bd; /* Grey */
+    background-color: #f1f3f5; /* Light grey background */
+    color: #495057; /* Dark grey text */
+}
+.logic-rec.rec-unknown strong {
+    color: #495057;
+}
+
+
+/* --- App Description Styling --- */
+details.app-description {
+    max-width: 800px; /* Match video list width for consistency */
+    margin: 10px auto 25px auto; /* Center align and add space below */
+    padding: 12px 18px;
+    background-color: #f3f4f6; /* Slightly different background */
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    color: #374151; /* Darker text */
+}
+
+details.app-description summary {
+    cursor: pointer; /* Hand cursor on hover */
+    font-weight: 500; /* Medium weight */
+    margin-bottom: 8px; /* Space below summary when open */
+    outline: none; /* Remove default focus outline if desired */
+    color: #1f2937; /* Even darker for the summary */
+}
+
+details.app-description summary:hover {
+    color: #0056b3; /* Color change on hover */
+}
+
+/* Style for the paragraph inside the details */
+details.app-description p {
+    margin-top: 8px;
+    margin-bottom: 0;
+    padding-left: 15px; /* Indent the description text */
+    border-left: 3px solid #d1d5db; /* Add a subtle left border */
+    font-size: 0.95em;
+    line-height: 1.5;
+}

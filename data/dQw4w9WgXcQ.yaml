@@ -1,0 +1,36 @@
+id: dQw4w9WgXcQ
+title: Sample Video 1 _ Getting Started
+embed_url: https://www.youtube.com/embed/dQw4w9WgXcQ # Make sure this is the actual embed URL
+source: YouTube
+tags:
+  - tutorial
+  - python
+  - webdev
+  - mostly_content # Tag indicating quality assessment
+
+# --- Timing ---
+total_duration_seconds: 213 # Crucial for timeline % calculation
+
+# --- Timeline Breakdown ---
+# Each item is a segment with start/end times in seconds
+timeline:
+  - start: 0
+    end: 15
+    type: intro       # Category for styling (maps to .segment-intro in CSS)
+    label: Channel Intro # Optional description for tooltip
+  - start: 15
+    end: 45
+    type: engagement
+    label: Like & Subscribe Plea # Example: Segment asking for interaction
+  - start: 45
+    end: 180
+    type: content
+    label: Core Tutorial Steps # The main valuable part
+  - start: 180
+    end: 195
+    type: ad
+    label: Sponsor Segment   # An advertisement or sponsored message
+  - start: 195
+    end: 213
+    type: outro
+    label: Recap & Next Video # Closing remarks

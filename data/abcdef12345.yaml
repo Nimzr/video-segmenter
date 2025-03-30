@@ -1,0 +1,21 @@
+# data/abcdef12345.yaml
+id: abcdef12345
+title: Sample Video 2 _Advanced Concepts
+embed_url: https://www.youtube.com/embed/abcdef12345
+source: YouTube
+tags:
+  - advanced
+  - azure
+  - scripting
+  - mixed_content # Contains valuable parts but also significant non-content sections
+total_duration_seconds: 600
+# Examples: "Recommended", "Good Despite Fluff", "Use with Caution", "Concise", "Skip Intro"
+user_recommendation: "Recommended, good pace"
+# --- User Assessment (NEW FIELD) ---
+user_recommendation: "Good content, but skip the anecdote"
+timeline:
+  - { start: 0,   end: 10,  type: intro,  label: Quick Intro } # You can use inline dicts too
+  - { start: 10,  end: 300, type: content, label: Deep Dive Part 1 }
+  - { start: 300, end: 330, type: other,   label: Off-topic anecdote } # Use 'other' for uncategorized
+  - { start: 330, end: 580, type: content, label: Deep Dive Part 2 }
+  - { start: 580, end: 600, type: outro,   label: Final thoughts }

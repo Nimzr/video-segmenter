@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are you the content?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Are you the content?</h1>
+
+    <details class="app-description">
+        <summary>What is this site about?</summary> <p>
+            The goal of this app is to provide a breakdown indicating if a video is worthy of your watch or primarily designed to consume your time.
+        </p> </details>
+
+    <div class="video-list">
+        {% for video in videos %}
+            <div class="video-item">
+                <h2>{{ video.title }}</h2>
+                <p>Source: {{ video.source }} | ID: {{ video.id }}</p>
+
+                {% if video.logic_recommendation %}
+                <div class="recommendation logic-rec rec-{{ video.logic_recommendation_css }}">
+                    {# Use the CSS class calculated in app.py (rec-good, rec-caution, ...) #}
+                    <strong>Analysis:</strong> {{ video.logic_recommendation }}
+                    {# Only show percentage if analysis is available #}
+                    {% if video.logic_recommendation_css != 'unknown' %}
+                        ({{ video.content_percentage }}% Content)
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                {% if video.user_recommendation %}
+                {# Display user recommendation only if it exists in the YAML #}
+                <div class="recommendation user-rec">
+                    <strong>User Note:</strong> {{ video.user_recommendation }}
+                </div>
+                {% endif %}
+                <div class="video-player">
+                    <iframe width="560" height="315" src="{{ video.embed_url }}"
+                            title="YouTube video player for {{ video.title }}" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="tags">
+                    Tags:
+                    {% for tag in video.tags %}
+                    <span class="tag tag-{{ tag | lower }}">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="timeline-container" title="Total Duration: {{ video.total_duration_seconds | format_time }}">
+                    <div class="timeline-bar">
+                        {% for segment in video.timeline %}
+                        <div class="timeline-segment segment-{{ segment.type | lower }}"
+                             style="width: {{ segment.width_percent }}%;"
+                             title="{{ segment.label | default(segment.type) }} ({{ segment.start | format_time }} - {{ segment.end | format_time }}, Type: {{ segment.type }})">
+                             {# Display segment type if label is missing, provide tooltip #}
+                             {# Optional: Add tiny text inside if space allows: {{ segment.type }} #}
+                        </div>
+                        {% endfor %}
+                    </div>
+                     {#
+                     <div class="timeline-labels">
+                        {% for segment in video.timeline %}
+                         <span style="width: {{ segment.width_percent }}%;"
+                               title="{{ segment.label }} ({{ segment.start | format_time }} - {{ segment.end | format_time }})">
+                               </span>
+                        {% endfor %}
+                     </div>
+                     #}
+                </div>
+                 <p class="duration-info">Total Duration: {{ video.total_duration_seconds | format_time }}</p>
+
+
+                <div class="timeline-legend">
+                    <span class="legend-title">Legend:</span>
+                    {# Loop through the legend data passed from app.py #}
+                    {% for type, description in legend_data.items() %}
+                        <div class="legend-item">
+                            {# The color swatch uses the SAME CSS class as the timeline segment #}
+                            <span class="legend-color-swatch segment-{{ type | lower }}"></span>
+                            <span class="legend-text">{{ description }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+                </div> {# End of video-item div #}
+
+        {% else %}
+            {# Updated fallback message #}
+            <p>No videos found. Add YAML files to the 'data' directory.</p>
+        {% endfor %}
+    </div> {# End of video-list div #}
+
+</body>
+</html>
